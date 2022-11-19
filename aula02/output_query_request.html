@@ -1,0 +1,713 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>RI UFPE: Search</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="Generator" content="DSpace 6.3" />
+
+        
+        <meta property='og:image' content="http://repositorio.ufpe.br/image/ufpe/attena-redes-sociais.png"/>
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="200">
+        <meta property="og:image:height" content="200">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="RI UFPE: Search">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css" type="text/css"/>
+	<link rel="stylesheet" href="/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" title="1" />
+        <link rel="alternate stylesheet" href="/static/css/bootstrap/bootstrap-theme.contraste.min.css" type="text/css" title="2" />
+	    <link rel="stylesheet" href="/static/css/bootstrap/dspace-theme.css" type="text/css" title="1"/>
+        <link rel="stylesheet" href="/static/css/bootstrap/dspace-theme-contraste.css" type="text/css" title="2" />
+        <!--Fonte Attena-->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59272c66add64525"></script>
+         
+        <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+        
+        <script src="https://use.fontawesome.com/0d325acffd.js"></script>
+        
+        <script type="text/javascript" src="/static/js/jquery-1.4.3.min.js"></script>
+
+
+        <link rel="search" type="application/opensearchdescription+xml" href="/open-search/description.xml" title="DSpace"/>
+
+        
+	<script type='text/javascript' src="/static/js/jquery/jquery-1.10.2.min.js"></script>
+	<script type='text/javascript' src='/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+	<script type='text/javascript' src='/static/js/bootstrap/bootstrap.min.js'></script>
+	<script type='text/javascript' src='/static/js/holder.js'></script>
+	<script type="text/javascript" src="/utils.js"></script>
+    	<script type="text/javascript" src="/static/js/choice-support.js"> </script>
+    	
+    	<script type="text/javascript" src="/static/js/js.js"></script>
+	
+
+
+    
+    
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-53528713-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    
+
+
+    
+        <script type="text/javascript">
+	var jQ = jQuery.noConflict();
+	jQ(document).ready(function() {
+		jQ( "#spellCheckQuery").click(function(){
+			jQ("#query").val(jQ(this).attr('data-spell'));
+			jQ("#main-query-submit").click();
+		});
+		jQ( "#filterquery" )
+			.autocomplete({
+				source: function( request, response ) {
+					jQ.ajax({
+						url: "/json/discovery/autocomplete?query=previdencia",
+						dataType: "json",
+						cache: false,
+						data: {
+							auto_idx: jQ("#filtername").val(),
+							auto_query: request.term,
+							auto_sort: 'count',
+							auto_type: jQ("#filtertype").val(),
+							location: ''	
+						},
+						success: function( data ) {
+							response( jQ.map( data.autocomplete, function( item ) {
+								var tmp_val = item.authorityKey;
+								if (tmp_val == null || tmp_val == '')
+								{
+									tmp_val = item.displayedValue;
+								}
+								return {
+									label: item.displayedValue + " (" + item.count + ")",
+									value: tmp_val
+								};
+							}))			
+						}
+					})
+				}
+			});
+	});
+	function validateFilters() {
+		return document.getElementById("filterquery").value.length > 0;
+	}
+</script>
+    
+    
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/static/js/html5shiv.js"></script>
+  <script src="/static/js/respond.min.js"></script>
+<![endif]-->
+    </head>
+
+    
+    
+    <body class="undernavigation">
+<a class="sr-only" href="#content">Skip navigation</a>
+<header class="navbar navbar-inverse navbar-fixed-top img-topo" >
+    
+    <div id="barra-brasil"> 
+        <ul id="menu-barra-temp">
+            <li class="list-barra">
+                <a class="info-barra" href="http://brasil.gov.br">Portal do Governo Brasileiro</a>
+            </li> 
+            <li>
+                <a class="info-barra" href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a>
+            </li>
+        </ul>
+    </div>    
+    
+            <div class="container">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="/"><img class="img-logo" src="/image/ufpe/attena-logo.png" alt="Logo do repositorio" /></a>
+       </div>
+       
+       <nav class="collapse navbar-collapse bs-navbar-collapse">
+         <ul class="nav navbar-nav">
+           <li class="">
+            <a href="/"><span class="glyphicon glyphicon-home"></span>
+            </a>
+           </li>
+                
+           <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="/community-list">Communities<br/>&amp;&nbsp;Collections</a></li>
+               <li class="divider"></li>
+        			 
+				
+				
+				
+				      			<li><a href="/browse?type=dateissued">Issue Date</a></li>
+					
+				      			<li><a href="/browse?type=author">Author</a></li>
+					
+				      			<li><a href="/browse?type=title">Title</a></li>
+					
+				      			<li><a href="/browse?type=subject">Subject</a></li>
+					
+				      			<li><a href="/browse?type=type">Type</a></li>
+					
+				      			<li><a href="/browse?type=access">Access type</a></li>
+					
+				    
+				
+
+            </ul>
+          </li>
+          <!--Sobre-->
+          <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+     			<li><a href="/static/jsp/apresentacao.jsp">Presentation</a></li>
+     			<li><a href="/static/jsp/politica.jsp">Politics</a></li>
+     			<li><a href="/static/jsp/equipe-tecnica.jsp">Technical Team</a></li>
+     			<li><div class="divider"></div>
+             	<li class="dropdown-header">Instructions for authors</li>
+             	<!--<li><a href="https://www.ufpe.br/sib/servicos/ficha" target="_blank">Catalytic sheet</a></li>-->
+     			<li><a href="https://www.ufpe.br/documents/39058/3034479/Orienta%C3%A7%C3%B5es+para+dep%C3%B3sito+durante+o+per%C3%ADodo+de+isolamento+social/94527b14-fa4b-4e48-b784-8893b2364cd3" target="_blank">Orientation for Delivery of Teses and DissertaÃ§Ãµes</a>
+     			<li><a href="https://www.ufpe.br/documents/39058/3034479/Termo+de+dep%C3%B3sito+-+BDTD+UFPE/8289bcdf-59fa-476f-80cf-0a628f72dd07" target="_blank">Term of authorization for Delivery of Teses and DissertaÃ§Ãµes</a>
+     			<!--<li><a href="/#">General Statistics</a></li>-->
+     			<!--<li><a href="/static/jsp/noticias.jsp">News</a></li>-->
+     			
+		 		
+		 	</ul>
+		 </li>
+		 <!--Ajuda-->
+		 <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+     			<li><a href="/static/jsp/faq.jsp">FAQ</a></li>
+     			<!--<li><a href="/static/jsp/manuais.jsp">Handbooks</a></li>-->
+		 	</ul>
+		 </li>
+		 <!--Contato e links-->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+             	<li><a href="/static/jsp/contato.jsp">Contact</a></li>
+             	<li><div class="divider"></div>
+             	<li class="dropdown-header">Links Úteis</li>
+     			<li><a href="http://www.ufpe.br" target="_blank">UFPE</a></li>
+     			<li><a href="https://duraspace.org/dspace/" target="_blank">Dspace</a></li>
+     			<li><a href="https://br.creativecommons.org/" target="_blank">Creative Commons</a></li>
+     			<li><a href="http://www.ibict.br/" target="_blank">IBICT</a></li>
+     			<li><a href="http://oasisbr.ibict.br/vufind/" target="_blank">Oasis BR</a></li>
+     			<li><a href="http://bdtd.ibict.br/vufind/" target="_blank">BDTD Nacional</a></li>
+     			<li><a href="http://diadorim.ibict.br/" target="_blank">Diadorim</a></li>
+     			<li><a href="http://sherpa.ac.uk/romeo/index.php?la=pt" target="_blank">Sherpa Romeo</a></li>
+		 	</ul>
+		 </li>
+		
+		
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					Language
+					
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					
+							<li>
+								<a style="text-transform: capitalize" onclick="javascript:document.repost.locale.value='es';
+								  document.repost.submit();" href="?locale=es">
+									<img class="flag" alt="Bandeira do Espanha" src="/image/ufpe/es_flag.png" />
+									español
+								</a>
+							</li>
+						
+					
+							<li>
+								<a style="text-transform: capitalize" onclick="javascript:document.repost.locale.value='en';
+								  document.repost.submit();" href="?locale=en">
+									<img class="flag" alt="Bandeira da grã bretanha" src="/image/ufpe/en_flag.png" />
+									English
+								</a>
+							</li>
+						
+					
+							<li>
+								<a style="text-transform: capitalize" onclick="javascript:document.repost.locale.value='pt_BR';
+								  document.repost.submit();" href="?locale=pt_BR">
+									<img class="flag" alt="Bandeira do Brasil" src="/image/ufpe/pt_BR_flag.png" />
+									português
+								</a>
+								
+							</li>
+						
+					
+				</ul>
+			</li>
+		
+		 <li id="click"><a href="#"><span class="glyphicon glyphicon-adjust" style="font-size: 75%;"></a></li>
+  </ul>
+
+  <div class="nav navbar-nav navbar-right">
+  	
+	<form method="get" action="/simple-search" class="navbar-form navbar-right">
+		<div class="form-group">
+			<input title="Type search term here" type="text" class="form-control" placeholder="Search&nbsp;DSpace" name="query" id="tequery" size="25"/>
+		</div>
+		<button type="submit" class="btn btn-primary btn-attena"><span class="glyphicon glyphicon-search"></span></button>
+		<br/>
+		<a class="btn-advanced-search" href="/advanced-search">
+			>> Advanced Search
+		</a>
+		
+	</form>
+
+	<ul class="nav navbar-nav-login">
+			<li class="dropdown">
+				
+					<a class="dropdown-toggle navbar-user" href="/mydspace" style="display:inline;">
+							<span class="glyphicon glyphicon-user"></span> 
+							Login
+					</a>
+					<div class="dropdown-content">
+							<p>ÁREA RESTRITA AOS ADMINISTRADORES</p>
+					</div>
+					
+			</li>
+		
+		</ul>
+</div>
+    </nav>
+
+            </div>
+
+</header>
+
+<main id="content" >
+	
+
+<div class="container">
+    
+
+
+
+  
+
+
+<ol class="breadcrumb">
+
+  <li><a href="/">RI UFPE</a></li>
+
+</ol>
+
+</div>                
+
+
+
+        
+<div class="container">
+
+    <div class="row">
+    <div class="col-md-9">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<h1>Search</h1>
+
+<div class="discovery-search-form panel panel-default">
+    
+	<div class="discovery-query panel-heading">
+    <form action="simple-search" method="get">
+        <label for="tlocation">
+         	Search:
+        </label>
+        <select name="location" id="tlocation">
+
+            
+            <option selected="selected" value="/">All of DSpace</option>
+
+            <option value="123456789/35287" >
+                Acessibilidade
+            </option>
+
+            <option value="123456789/31" >
+                Centros Acadêmicos
+            </option>
+
+            <option value="123456789/10043" >
+                Memória Institucional
+            </option>
+
+            <option value="123456789/34552" >
+                Propriedade Intelectual
+            </option>
+
+            <option value="123456789/38179" >
+                Recursos Educacionais Abertos - REA
+            </option>
+
+            <option value="123456789/50" >
+                Teses e Dissertações
+            </option>
+                                </select><br/>
+                                <label for="query">for</label>
+                                <input type="text" size="30%" id="query" name="query" value="previdencia"/>
+                                <input type="submit" id="main-query-submit" class="btn btn-primary btn-attena" value="Go" />
+                  
+                                <input type="hidden" value="10" name="rpp" />
+                                <input type="hidden" value="score" name="sort_by" />
+                                <input type="hidden" value="desc" name="order" />
+
+<a class="btn btn-default" href="/simple-search">Start a new search</a>	
+		</form>
+		</div>
+
+		<div class="discovery-search-filters panel-body">
+		<h5>Add filters:</h5>
+		<p class="discovery-search-filters-hint">Use filters to refine the search results.</p>
+		<form action="simple-search" method="get">
+		<input type="hidden" value="" name="location" />
+		<input type="hidden" value="previdencia" name="query" />
+		
+		<select id="filtername" name="filtername">
+		<option value="title">Title</option><option value="author">Author</option><option value="advisor">Advisor</option><option value="subject">Subject</option><option value="dateIssued">Date Issued</option><option value="type">Documentary typology</option>
+		</select>
+		<select id="filtertype" name="filtertype">
+		<option value="equals">Equals</option><option value="contains">Contains</option><option value="authority">ID</option><option value="notequals">Not Equals</option><option value="notcontains">Not Contains</option><option value="notauthority">Not ID</option>
+		</select>
+		<input type="text" id="filterquery" name="filterquery" size="30%" required="required" />
+		<input type="hidden" value="10" name="rpp" />
+		<input type="hidden" value="score" name="sort_by" />
+		<input type="hidden" value="desc" name="order" />
+		<input class="btn btn-default" type="submit" value="Add" onclick="return validateFilters()" />
+		</form>
+		</div>        
+
+        
+   <div class="discovery-pagination-controls panel-footer">
+   <form action="simple-search" method="get">
+   <input type="hidden" value="" name="location" />
+   <input type="hidden" value="previdencia" name="query" />
+		
+           <label for="rpp">Results/Page</label>
+           <select name="rpp" id="rpp">
+
+                   <option value="5" >5</option>
+
+                   <option value="10" selected="selected">10</option>
+
+                   <option value="15" >15</option>
+
+                   <option value="20" >20</option>
+
+                   <option value="25" >25</option>
+
+                   <option value="30" >30</option>
+
+                   <option value="35" >35</option>
+
+                   <option value="40" >40</option>
+
+                   <option value="45" >45</option>
+
+                   <option value="50" >50</option>
+
+                   <option value="55" >55</option>
+
+                   <option value="60" >60</option>
+
+                   <option value="65" >65</option>
+
+                   <option value="70" >70</option>
+
+                   <option value="75" >75</option>
+
+                   <option value="80" >80</option>
+
+                   <option value="85" >85</option>
+
+                   <option value="90" >90</option>
+
+                   <option value="95" >95</option>
+
+                   <option value="100" >100</option>
+
+           </select>
+           &nbsp;|&nbsp;
+
+               <label for="sort_by">Sort items by</label>
+               <select name="sort_by" id="sort_by">
+                   <option value="score">Relevance</option>
+ <option value="dc.title_sort" >Title</option> <option value="dc.date.issued_dt" >Issue Date</option>
+               </select>
+
+           <label for="order">In order</label>
+           <select name="order" id="order">
+               <option value="ASC" >Ascending</option>
+               <option value="DESC" selected="selected">Descending</option>
+           </select>
+           <label for="etal">Authors/record</label>
+           <select name="etal" id="etal">
+
+               <option value="0" selected="selected">All</option>
+<option value="1" >1</option>
+                       <option value="5" >5</option>
+
+                       <option value="10" >10</option>
+
+                       <option value="15" >15</option>
+
+                       <option value="20" >20</option>
+
+                       <option value="25" >25</option>
+
+                       <option value="30" >30</option>
+
+                       <option value="35" >35</option>
+
+                       <option value="40" >40</option>
+
+                       <option value="45" >45</option>
+
+                       <option value="50" >50</option>
+
+           </select>
+           <input class="btn btn-default" type="submit" name="submit_search" value="Update" />
+
+
+</form>
+   </div>
+</div>   
+
+<hr/>
+<div class="discovery-result-pagination row container">
+
+    
+	<div class="alert alert-info">Results 1-10 of 2941 (Search time: 0.006 seconds).</div>
+    <ul class="pagination pull-right">
+	<li class="disabled"><span>previous</span></li>
+	
+	<li class="active"><span>1</span></li>
+
+	
+	
+	<li><a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;start=10">2</a></li>
+
+	
+	
+	<li><a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;start=20">3</a></li>
+
+	
+	
+	<li><a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;start=30">4</a></li>
+
+	<li class="disabled"><span>...</span></li><li><a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;start=2940">295</a></li><li><a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;start=10">next</a></li>
+	</ul>
+<!-- give a content to the div -->
+</div>
+<div class="discovery-result-results">
+
+
+
+
+
+    <div class="panel panel-info">
+    <div class="panel-heading">Item hits:</div>
+    <table align="center" class="table" summary="This table browses all dspace content">
+<tr>
+<th id="t1" class="oddRowEvenCol">Issue Date</th><th id="t2" class="oddRowOddCol">Title</th><th id="t3" class="oddRowEvenCol">Author(s)</th></tr><tr><td headers="t1" nowrap="nowrap" align="right">1-Dec-2011</td><td headers="t2" ><a href="/handle/123456789/34529">Previdência&#x20;pública&#x20;versus&#x20;previdência&#x20;privada:&#x20;um&#x20;estudo&#x20;comparativo&#x20;entre&#x20;a&#x20;previdência&#x20;social&#x20;brasileira&#x20;e&#x20;o&#x20;plano&#x20;de&#x20;previdência&#x20;privada&#x20;do&#x20;Banco&#x20;do&#x20;Brasil&#x20;-&#x20;Brasilprev.</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=COUTINHO%2C+Edgard+Guilherme+de+Lima">COUTINHO,&#x20;Edgard&#x20;Guilherme&#x20;de&#x20;Lima</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">-</td><td headers="t2" ><a href="/handle/123456789/20840">Grito&#x20;no&#x20;Nordeste,&#x20;nº&#x20;59</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=A%C3%A7%C3%A3o+Cat%C3%B3lica+Rural%2C+%28ACR%29">Ação&#x20;Católica&#x20;Rural,&#x20;(ACR)</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">24-Mar-2015</td><td headers="t2" ><a href="/handle/123456789/46315">Previdência&#x20;social&#x20;e&#x20;pobreza&#x20;no&#x20;nordeste:&#x20;PNAD&#x20;2013.</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=SILVA%2C+Eliz%C3%A2nia+de+Azevedo">SILVA,&#x20;Elizânia&#x20;de&#x20;Azevedo</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">31-Jan-2008</td><td headers="t2" ><a href="/handle/123456789/5256">Sistemas&#x20;de&#x20;informação&#x20;e&#x20;riscos&#x20;em&#x20;fundo&#x20;de&#x20;pensão</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=Souza%2C+Jo%C3%A3o+Bosco+de&amp;value_lang=pt_BR">Souza,&#x20;João&#x20;Bosco&#x20;de</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">31-Jan-2011</td><td headers="t2" ><a href="/handle/123456789/3745">Mecanismo&#x20;de&#x20;incentivo&#x20;à&#x20;renovação&#x20;da&#x20;mão-de-obra&#x20;&#x20;no&#x20;mercado&#x20;de&#x20;trabalho&#x20;face&#x20;ao&#x20;sistema&#x20;&#x20;previdenciário</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=Coimbra%2C+Leandro+Willer+Pereira&amp;value_lang=pt_BR">Coimbra,&#x20;Leandro&#x20;Willer&#x20;Pereira</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">20-Oct-2022</td><td headers="t2" ><a href="/handle/123456789/47482">Avaliação&#x20;da&#x20;Introdução&#x20;dos&#x20;regimes&#x20;próprios&#x20;de&#x20;previdência&#x20;social&#x20;nos&#x20;municípios&#x20;brasileiros&#x20;em&#x20;indicadores&#x20;do&#x20;mercado&#x20;de&#x20;trabalho&#x20;do&#x20;setor&#x20;público</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=SANTOS%2C+Lauro+Henrique+Rodrigues">SANTOS,&#x20;Lauro&#x20;Henrique&#x20;Rodrigues</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">26-Jun-2019</td><td headers="t2" ><a href="/handle/123456789/42035">Análise&#x20;da&#x20;Situação&#x20;Previdenciária&#x20;dos&#x20;Regimes&#x20;Próprios&#x20;de&#x20;Previdência&#x20;Social&#x20;das&#x20;Regiões&#x20;Agreste&#x20;e&#x20;Metropolitana&#x20;de&#x20;Pernambuco.</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=SILVA+J%C3%9ANIOR%2C+Andregil+Goes+da">SILVA&#x20;JÚNIOR,&#x20;Andregil&#x20;Goes&#x20;da</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">17-Dec-2018</td><td headers="t2" ><a href="/handle/123456789/41999">O&#x20;déficit&#x20;previdenciário&#x20;brasileiro:&#x20;uma&#x20;análise&#x20;comparativa&#x20;entre&#x20;duas&#x20;visões&#x20;metodológicas&#x20;diferentes.</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=SILVA%2C+Yslany+Rodrigues+da">SILVA,&#x20;Yslany&#x20;Rodrigues&#x20;da</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">3-Mar-2015</td><td headers="t2" ><a href="/handle/123456789/42768">A&#x20;importância&#x20;da&#x20;interiorização&#x20;da&#x20;rede&#x20;de&#x20;atendimento&#x20;do&#x20;INSS.</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=SANTOS%2C+Paula+Janaine+dos">SANTOS,&#x20;Paula&#x20;Janaine&#x20;dos</a></em></td></tr>
+<tr><td headers="t1" nowrap="nowrap" align="right">10-Aug-2020</td><td headers="t2" ><a href="/handle/123456789/39045">O&#x20;efeito&#x20;da&#x20;Reforma&#x20;da&#x20;Previdência&#x20;na&#x20;decisão&#x20;da&#x20;aposentadoria&#x20;voluntária&#x20;:&#x20;uma&#x20;análise&#x20;multimétodo&#x20;com&#x20;os&#x20;servidores&#x20;do&#x20;IFPE</a></td><td headers="t3" ><em><a href="/browse?type=author&amp;value=PRAZERES%2C+L%C3%ADlian+Guerra">PRAZERES,&#x20;Lílian&#x20;Guerra</a></em></td></tr>
+</table>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+	</div>
+	
+	<div class="col-md-3">
+        
+
+
+<h1 class="facets">Discover</h1>
+<div id="facets" class="facetsBox">
+
+<div id="facet_author" class="panel panel-success">
+	    <div class="panel-heading">Author</div>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">4</span> <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;filtername=author&amp;filterquery=Mendon%C3%A7a%2C+Gentil&amp;filtertype=equals"
+                title="Filter by Mendonça, Gentil">
+                Mendonça, Gentil</a></li><li class="list-group-item"><span class="badge">2</span> <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;filtername=author&amp;filterquery=ALVES%2C+Jordania+Louse+Silva&amp;filtertype=equals"
+                title="Filter by ALVES, Jordania Louse Silva">
+                ALVES, Jordania Louse Silva</a></li><li class="list-group-item"><span class="badge">2</span> <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;filtername=author&amp;filterquery=ALVES%2C+Pedro+de+Oliveira&amp;filtertype=equals"
+                title="Filter by ALVES, Pedro de Oliveira">
+                ALVES, Pedro de Oliveira</a></li><li class="list-group-item"><span style="visibility: hidden;">.</span>
+	        
+            
+            <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;author_page=1"><span class="pull-right">next ></span></a>
+            </li></ul></div><div id="facet_dateIssued" class="panel panel-success">
+	    <div class="panel-heading">Date issued</div>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">2920</span> <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;filtername=dateIssued&amp;filterquery=%5B2000+TO+2022%5D&amp;filtertype=equals"
+                title="Filter by 2000 - 2022">
+                2000 - 2022</a></li><li class="list-group-item"><span class="badge">16</span> <a href="/simple-search?query=previdencia&amp;sort_by=score&amp;order=desc&amp;rpp=10&amp;etal=0&amp;filtername=dateIssued&amp;filterquery=%5B1900+TO+1999%5D&amp;filtertype=equals"
+                title="Filter by 1900 - 1999">
+                1900 - 1999</a></li></ul></div>
+
+</div>
+
+
+    </div>
+    </div>       
+
+</div>
+</main>
+    
+    <footer class="navbar-inverse">
+    	<div id="box">
+            <div class="box-img">
+        		<div class="img-ufpe">
+        			<a href="http://www.ufpe.br" target="_blank">
+        				<img class="img-ufpe" src="/image/ufpe/ufpe.png" alt="Logo UFPE" />
+        			</a>
+        		</div>
+            </div>
+    		<div id="box-left">
+    			<ul>
+    				<li><p style="font-weight: bold;">ATTENA - Repositório Digital da UFPE</p></li>
+    				<li><p><span class="glyphicon glyphicon-phone-alt"></span> (81) 2126-8089</p></li>
+                                <li><p><span class="glyphicon glyphicon-envelope"></span> attena@ufpe.br</p></li>
+			</ul>
+				<div id="box-share">
+					<div class="addthis_inline_share_toolbox"></div>
+				</div>
+				<p class="title-share">Share on</p>
+    		</div>
+    		<div id="box-right">
+				<p class="info-copyright">UFPE © Copyright 2019 - Dspace Software 6.3 - All rights reserved</p>
+			</div>
+		</div>
+    </footer>
+    <div id="footer-brasil"></div>
+    </body>
+     
+    <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+</html>
+
